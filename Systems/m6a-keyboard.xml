@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <key n="68">
+    <name>D</name>
+    <desc>Bomber bay</desc>
+    <binding>
+      <command>nasal</command>
+      <script>doors.passenger.toggle();</script>
+    </binding>
+  </key>
+
+  <key n="100">
+    <name>d</name>
+    <desc>Crew door</desc>
+    <binding>
+      <command>nasal</command>
+      <script>doors.crew.toggle();</script>
+    </binding>
+  </key>
+
+  <key n="101">
+    <name>e</name>
+    <desc>Guns</desc>
+    <binding>
+      <command>nasal</command>
+      <script>guns.fire_MG()</script>
+    </binding>
+    <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>guns.stop_MG()</script>
+      </binding>
+    </mod-up>
+  </key>
+
+  <key n="5">
+    <name>Ctrl-e</name>
+    <desc>Drop Torpedo</desc>
+    <binding>
+      <command>property-assign</command>
+      <property>controls/armament/station/release-all</property>
+      <value>1</value>
+    </binding>
+    <binding>
+      <command>property-assign</command>
+      <property>sim/multiplay/generic/int[6]</property>
+      <value>0</value>
+    </binding>
+    <mod-up>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/armament/station/release-all</property>
+        <value>0</value>
+      </binding>
+    </mod-up>
+  </key>
+
+</PropertyList>

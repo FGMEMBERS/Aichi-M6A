@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>interior.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>interieur</object-name>
+    <object-name>inttour</object-name>
+    <object-name>planchet</object-name>
+    <object-name>intverriereA</object-name>
+    <object-name>intverriereB</object-name>
+    
+    <!-- Objets transparents -->
+    <object-name>intvitres</object-name>
+    <object-name>intvitresverriereA</object-name>
+    <object-name>intvitresverriereB</object-name>
+  </animation>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Aichi-M6A/Models/Effects/Glass/glass</inherits-from>
+    <object-name>intvitres</object-name>
+    <object-name>intvitresverriereA</object-name>
+    <object-name>intvitresverriereB</object-name>
+  </effect>
+
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>intvitres</object-name>
+    <object-name>intvitresverriereA</object-name>
+    <object-name>intvitresverriereB</object-name>
+  </effect>
+
+  <!-- Pilote -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m> -1.23 </x-m>
+      <y-m>  0.00 </y-m>
+      <z-m>  0.72 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Gunner -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m>  0.33 </x-m>
+      <y-m>  0.00 </y-m>
+      <z-m>  0.57 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Tableau de bord -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Interior/Panel/panel.xml</path>
+    <offsets>
+      <x-m> -1.59454 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.85241 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Left side -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Interior/Panel/Left/left.xml</path>
+    <offsets>
+      <x-m> -1.19580 </x-m>
+      <y-m> -0.37255 </y-m>
+      <z-m>  0.48220 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Right side -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Interior/Panel/Right/right.xml</path>
+    <offsets>
+      <x-m> -1.13855 </x-m>
+      <y-m>  0.33002 </y-m>
+      <z-m>  0.52336 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Center -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Interior/Panel/Center/center.xml</path>
+  </model>
+
+  <!-- Canopy -->
+  <animation>
+    <name>IntVerriereAvant</name>
+    <object-name>intverriereA</object-name>
+    <object-name>intvitresverriereA</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>IntVerriereAvant</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>IntVerriereAvant</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <factor> 0.6 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>IntVerriereAvant</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <factor> 0.04 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>IntVerriereArriere</name>
+    <object-name>intverriereB</object-name>
+    <object-name>intvitresverriereB</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>IntVerriereArriere</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.passenger.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>IntVerriereArriere</object-name>
+    <property>sim/model/door-positions/passenger/position-norm</property>
+    <factor> 0.5 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>IntVerriereArriere</object-name>
+    <property>sim/model/door-positions/passenger/position-norm</property>
+    <factor> -0.04 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+</PropertyList>

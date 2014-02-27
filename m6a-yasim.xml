@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Aichi M6A Seiran - 2014 BARANGER Emmanuel
+
+     sources          : http://en.wikipedia.org/wiki/Aichi_M6A
+
+     wingspan         :  12.26 m  (   40 ft 2 3/4 in )
+     length           :  11.64 m  (   38 ft 2 1/4 in )
+     height           :   4.58 m  (   15 ft 3/8 in   )
+     empty weight     : 3301 kg   ( 7277 lb          )
+     engine           : 1 Aichi Atsuta Type 31 liquid-cooled, inverted V12 cylinder ( 1400 hp )
+     max speed        :  474 km/h (  256 kt          ) at 5200 m ( 17060 ft )
+     cruise speed     :  296 km/h (  160 kt          ) at 3000 m (  9850 ft )
+-->
+<airplane mass="7277">
+
+  <approach speed="50" aoa="4" fuel="0.3">
+    <control-setting value="0.2" axis="/controls/engines/engine[0]/throttle"/>
+    <control-setting value="1.0" axis="/controls/engines/engine[0]/mixture"/>
+    <control-setting value="1.0" axis="/controls/engines/engine[0]/propeller-pitch"/>
+    <control-setting value="1.0" axis="/controls/flight/flaps"/>
+  </approach>
+
+  <cruise speed="160" alt="16000" >
+    <control-setting value="1" axis="/controls/engines/engine[0]/throttle" />
+    <control-setting value="1" axis="/controls/engines/engine[0]/mixture" />
+    <control-setting value="1" axis="/controls/engines/engine[0]/propeller-pitch" />
+    <control-setting value="0" axis="/controls/flight/flaps" />
+  </cruise>
+
+  <cockpit x="0.95675" y="0" z="1.13835" />
+
+  <!-- Fuselage -->
+  <fuselage ax="4.90246" ay=" 0.0000" az=" 0.22662" bx="-5.78057" by=" 0.0000" bz=" 0.46501" width="1.00" taper="0.5" midpoint="0.25"/>
+
+  <!-- Left float -->
+  <fuselage ax="5.81926" ay=" 1.6863" az="-1.88527" bx="-2.09389" by=" 1.6863" bz="-1.55628" width="1.05" taper="0.3" midpoint="0.3"/>
+
+  <!-- Right float -->
+  <fuselage ax="5.81926" ay="-1.6863" az="-1.88527" bx="-2.09389" by="-1.6863" bz="-1.55628" width="1.05" taper="0.3" midpoint="0.3"/>
+
+  <wing x="0.86652" y="0" z="-0.12076" 
+        chord="2.711" 
+        length="6.136" 
+        taper="0.6" 
+        dihedral="4.5"
+        sweep="-2.5"
+        camber="0.01">
+        <stall aoa="16" width="1" peak="3.5" />
+        <flap0 start="0.12" end="0.51" lift="1.5" drag="1.6" />
+        <flap1 start="0.51" end="0.92" lift="1.3" drag="1.8" />
+
+        <control-input control="FLAP0" axis="/controls/flight/flaps" />
+        <control-input control="FLAP1" split="true" axis="/controls/flight/aileron" />
+        <control-input control="FLAP1" split="true" axis="/controls/flight/aileron-trim" />
+
+        <control-output control="FLAP0" prop="/surface-positions/flaps-pos-norm"/>
+        <control-output control="FLAP1" prop="/surface-positions/left-aileron-pos-norm" side="left"/>
+        <control-output control="FLAP1" prop="/surface-positions/right-aileron-pos-norm" side="right"/>
+        <control-output control="FLAP1" prop="/surface-positions/aileron-pos-norm"/>
+
+        <control-speed transition-time="8" control="FLAP0" />
+  </wing>
+
+  <hstab x="-4.4" y="0" z="0.70" 
+         chord="1.565"
+         length="2.539"
+         taper="0.4"
+         sweep="1">
+         <stall aoa="16" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.3" drag="1.6"/>
+
+         <control-input control="FLAP0" axis="/controls/flight/elevator" />
+         <control-input control="FLAP0" axis="/controls/flight/elevator-trim" />
+
+         <control-output prop="/surface-positions/elevator-pos-norm" control="FLAP0" />
+  </hstab>
+
+  <vstab x="-4.62909" y="0" z="0.05361" 
+         chord="2.404" 
+         length="2.445"
+         taper="0.36" 
+         sweep="12">
+         <stall aoa="12" width="1" peak="1.5"/>
+         <flap0 start="0" end="0.82" lift="1.3" drag="1.1"/>
+
+         <control-input control="FLAP0" axis="/controls/flight/rudder" invert="true"/>
+         <control-input control="FLAP0" axis="/controls/flight/rudder-trim" invert="true"/>
+
+         <control-output prop="/surface-positions/rudder-pos-norm" control="FLAP0" min="1" max="-1"/>
+  </vstab>
+
+  <!-- Engines   source            : http://en.wikipedia.org/wiki/Aichi_Atsuta
+
+                 name              : Aichi Atsuta
+                 type              : Twelve-cylinder liquid-cooled supercharged 60 deg inverted Vee aircraft piston engine
+                 power takeoff     : 1400 hp at 2800 rpm at sea level
+                 power cruise      : 1290 hp at 2600 rpm at 5000 m ( 16000 ft )
+                 weight            : 715 kg ( 1576 lb )
+                 displacement      : 33.93 L (2071 cu in)
+                 compression       : 7.2:1
+
+  -->
+  <propeller x="3.24114" y="0" z="0.20852" 
+             mass="1576" 
+             radius="1.665"
+             moment="35"
+             cruise-power="1290" 
+             cruise-alt="16000" 
+             cruise-speed="160" 
+             cruise-rpm="2600" 
+             min-rpm="500" 
+             max-rpm="2800">
+             <actionpt x="4.49114" y="0" z="0.20852"/>
+             <piston-engine eng-rpm="2800" 
+                            alt="0" 
+                            eng-power="1400"
+                            displacement="2071" 
+                            compression="7.2"/>
+             <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle"/>
+             <control-input control="STARTER" axis="/controls/engines/engine[0]/starter"/>
+             <control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos"/>
+             <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture"/>
+             <control-input control="ADVANCE" axis="/controls/engines/engine[0]/propeller-pitch"/>
+  </propeller>
+
+  <!-- Flotteurs -->
+  <!-- 0 / 1 Avants -->
+  <gear x="5.229" y="1.6863" z="-2.24" 
+        compression="1.2" 
+        spring = "15" 
+        sfric = "0.8" 
+        dfric = "0.7" 
+        on-water="1" 
+        on-solid="1" 
+        reduce-friction-by-extension="1.15"
+        speed-planing="15" 
+        spring-factor-not-planing="0.7">
+  </gear>
+
+  <gear x="5.229" y="-1.6863" z="-2.24" 
+        compression="1.2" 
+        spring = "15" 
+        sfric = "0.8" 
+        dfric = "0.7" 
+        on-water="1" 
+        on-solid="1" 
+        reduce-friction-by-extension="1.15"
+        speed-planing="15" 
+        spring-factor-not-planing="0.7">
+  </gear>
+
+  <!-- 2 / 3 Centrales -->
+  <gear x="1.698" y="1.6863" z="-2.24" 
+        compression="1.5" 
+        spring = "15" 
+        sfric = "0.85" 
+        dfric = "0.75" 
+        on-water="1" 
+        on-solid="1" 
+        reduce-friction-by-extension="1.15"
+        speed-planing="25" 
+        spring-factor-not-planing="0.25">
+  </gear>
+
+  <gear x="1.698" y="-1.6863" z="-2.24" 
+        compression="1.5" 
+        spring = "15" 
+        sfric = "0.85"
+        dfric = "0.75" 
+        on-water="1" 
+        on-solid="1" 
+        reduce-friction-by-extension="1.15"
+        speed-planing="25" 
+        spring-factor-not-planing="0.25">
+  </gear>
+
+  <!-- 4 / 5 Arrieres -->
+  <gear x="-1.283" y="1.6863" z="-1.98" 
+        compression="1.8" 
+        spring = "8" 
+        sfric = "0.9" 
+        dfric = "0.8" 
+        on-water="1" 
+        on-solid="1" 
+        reduce-friction-by-extension="0.9"
+        speed-planing="25" 
+        spring-factor-not-planing="3">
+  </gear>
+  
+  <gear x="-1.283" y="-1.6863" z="-1.98" 
+        compression="1.8" 
+        spring = "8" 
+        sfric = "0.9" 
+        dfric = "0.8" 
+        on-water="1" 
+        on-solid="1" 
+        reduce-friction-by-extension="0.9"
+        speed-planing="25" 
+        spring-factor-not-planing="3">
+  </gear>
+
+  <!-- 6 - Gouvernail gauche -->
+  <gear x="-2.08345" y="1.6863" z="-1.62403"
+        compression="1.8"
+        spring="8" 
+        sfric="0.9" 
+        dfric="0.8" 
+        ignored-by-solver="1"
+        on-water="1"
+        on-solid="0"
+        reduce-friction-by-extension="0.9"
+        speed-planing="25" 
+        spring-factor-not-planing="3">
+        <control-input axis="/controls/gear/water-rudder-pos" control="STEER" invert ="true" square="true"/>
+  </gear>
+
+  <!-- 7 - Gouvernail droit -->
+  <gear x="-2.08345" y="-1.6863" z="-1.62403"
+        compression="1.8"
+        spring="8" 
+        sfric="0.9" 
+        dfric="0.8" 
+        ignored-by-solver="1"
+        on-water="1"
+        on-solid="0"
+        reduce-friction-by-extension="0.9"
+        speed-planing="25" 
+        spring-factor-not-planing="3">
+        <control-input axis="/controls/gear/water-rudder-pos" control="STEER" invert ="true" square="true"/>
+  </gear>
+
+  <!-- Fuel  --> 
+  <tank x=" 0.95" y=" 1.69" z="0.0" capacity="210" />
+  <tank x=" 0.30" y=" 0.00" z="0.5" capacity="156" />
+  <tank x=" 0.95" y="-1.69" z="0.0" capacity="210" />
+
+  <ballast x="5" y="0" z="-2" mass="350" />
+
+</airplane>
