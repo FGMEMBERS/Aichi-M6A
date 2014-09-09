@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>fo-psi.ac</path>
+
+  <animation>
+    <object-name>fond</object-name>
+    <object-name>face</object-name>
+    <object-name>fuel.needle</object-name>
+    <object-name>oil.needle</object-name>
+
+    <object-name>vitre</object-name>
+  </animation>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Aichi-M6A/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitre</object-name>
+  </effect>
+  
+  <animation>
+    <type>material</type>
+    <object-name>face</object-name>
+    <object-name>fuel.needle</object-name>
+    <object-name>oil.needle</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   0.50 </red>
+      <green> 0.25 </green>
+      <blue>  0.25 </blue>
+    </emission>
+  </animation>
+ 
+  <animation>
+    <type>rotate</type>
+    <object-name>fuel.needle</object-name>
+    <property>/engines/engine/fuel-pump-psi[0]</property>
+    <min> 0.00000 </min>
+    <max> 7.11167 </max>
+    <interpolation>
+      <entry><ind> 0.000000 </ind><dep>    0 </dep></entry>
+      <entry><ind> 7.111673 </ind><dep> -180 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.003 </y-m>
+      <z-m> 0.000 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>oil.needle</object-name>
+    <property>/engines/engine/oil-pressure-psi[0]</property>
+    <min>0</min>
+    <max>142.233</max>
+    <interpolation>
+      <entry><ind>   0.000 </ind><dep>   0 </dep></entry>
+      <entry><ind> 142.233 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.000 </x-m>
+      <y-m> -0.003 </y-m>
+      <z-m>  0.000 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>

@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>m6a.ac</path>
+
+  <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/Aichi-M6A/Models/Liveries", 10);
+
+      var self = cmdarg();
+
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
+    </load>
+
+    <unload>
+      livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
+    </unload>
+  </nasal>
+
+  <animation>
+    <!-- draw these first (in no particular order) -->
+    <object-name>fuselage</object-name>
+    <object-name>verriereA</object-name>
+    <object-name>verriereB</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>voletG1</object-name>
+    <object-name>voletG2</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletD1</object-name>
+    <object-name>voletD2</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>bol</object-name>
+    <object-name>antenne</object-name>
+    <object-name>supports</object-name>
+    <object-name>gouvernailG</object-name>
+    <object-name>gouvernailD</object-name>
+    <object-name>flotteursH</object-name>
+
+    <object-name>trous</object-name>
+    <object-name>helice</object-name>
+    <object-name>echappes</object-name>
+    <object-name>cables</object-name>
+    <object-name>flotteursB</object-name>
+
+    <!-- draw this at last (order critical!) -->
+    <object-name>vitres</object-name>
+    <object-name>vitresverriereA</object-name>
+    <object-name>vitresverriereB</object-name>
+    <object-name>propblur</object-name>
+    <object-name>propdisc</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>fuselage</object-name>
+    <object-name>verriereA</object-name>
+    <object-name>verriereB</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>voletG1</object-name>
+    <object-name>voletG2</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletD1</object-name>
+    <object-name>voletD2</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>bol</object-name>
+    <object-name>antenne</object-name>
+    <object-name>supports</object-name>
+    <object-name>gouvernailG</object-name>
+    <object-name>gouvernailD</object-name>
+    <object-name>flotteursH</object-name>
+
+    <object-name>trous</object-name>
+    <object-name>helice</object-name>
+    <object-name>echappes</object-name>
+    <object-name>cables</object-name>
+    <object-name>flotteursB</object-name>
+
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+  </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <object-name>fuselage</object-name>
+    <object-name>verriereA</object-name>
+    <object-name>verriereB</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>voletG1</object-name>
+    <object-name>voletG2</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletD1</object-name>
+    <object-name>voletD2</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>direction</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>bol</object-name>
+    <object-name>antenne</object-name>
+    <object-name>supports</object-name>
+    <object-name>gouvernailG</object-name>
+    <object-name>gouvernailD</object-name>
+    <object-name>flotteursH</object-name>
+  </effect>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Aichi-M6A/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>vitresverriereA</object-name>
+    <object-name>vitresverriereB</object-name>
+  </effect>
+
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>vitresverriereA</object-name>
+    <object-name>vitresverriereB</object-name>
+    <object-name>propblur</object-name>
+    <object-name>propdisc</object-name>
+  </effect>
+
+  <!-- Une ombre pour OSG -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/shadow.xml</path>
+    <offsets>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m> -1.9 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Intérieur -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- Bomb/Torpedo -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/weapons/bomb.xml</path>
+    <offsets>
+      <x-m> -1.40 </x-m>
+      <y-m>  0.00 </y-m>
+      <z-m> -0.73 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Trainée flotteur gauche -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/waves/wakeG.xml</path>
+    <offsets>
+      <x-m> -1.25392 </x-m>
+      <y-m> -1.68629 </y-m>
+      <z-m> -2.41183 </z-m>
+      <pitch-deg> -25 </pitch-deg>
+    </offsets>
+  </model> 
+
+  <!-- Trainée flotteur droite -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/waves/wakeD.xml</path>
+    <offsets>
+      <x-m> -1.25392 </x-m>
+      <y-m>  1.68629 </y-m>
+      <z-m> -2.41183 </z-m>
+      <pitch-deg> -25 </pitch-deg>
+    </offsets>
+  </model> 
+  
+  <!-- Cranking effects -->
+  <!-- Left -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.66588 </x-m>
+      <y-m> -0.57239 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> 35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.46750 </x-m>
+      <y-m> -0.57810 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> 35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.26463 </x-m>
+      <y-m> -0.58503 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> 35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.07012 </x-m>
+      <y-m> -0.58890 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> 35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -2.86766 </x-m>
+      <y-m> -0.59257 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> 35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -2.66805 </x-m>
+      <y-m> -0.59583 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> 35 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- Right -->
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.66588 </x-m>
+      <y-m>  0.57239 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> -35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.46750 </x-m>
+      <y-m>  0.57810 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> -35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.26463 </x-m>
+      <y-m>  0.58503 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> -35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.07012 </x-m>
+      <y-m>  0.58890 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> -35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -2.86766 </x-m>
+      <y-m>  0.59257 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> -35 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -2.66805 </x-m>
+      <y-m>  0.59583 </y-m>
+      <z-m>  0.07481 </z-m>
+      <heading-deg> -35 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- L'hélice --> 
+  <animation>
+    <name>HeliceComplete</name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+    <object-name>helice</object-name>
+    <object-name>bol</object-name>
+  </animation>
+
+  <!-- Séléction de l'objet visible en fonction des rpm -->
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propblur</object-name>
+    <condition>
+    <and>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>600.000</value>
+      </greater-than>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500.001</value>
+      </less-than>
+    </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>helice</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>HeliceComplete</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
+    <property>engines/engine[0]/rpm</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> -4.44266 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.22662 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Gouverne de direction -->
+  <animation>
+    <type>rotate</type>
+    <object-name>direction</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 15 </factor>
+    <center>
+      <x-m> 5.08065 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 0.86772 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>gouvernailG</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m>  2.11474 </x1-m>
+      <y1-m> -1.68630 </y1-m>
+      <z1-m> -1.75100 </z1-m>
+      <x2-m>  2.05575 </x2-m>
+      <y2-m> -1.68630 </y2-m>
+      <z2-m> -1.50156 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>gouvernailD</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m>  2.11474 </x1-m>
+      <y1-m>  1.68630 </y1-m>
+      <z1-m> -1.75100 </z1-m>
+      <x2-m>  2.05575 </x2-m>
+      <y2-m>  1.68630 </y2-m>
+      <z2-m> -1.50156 </z2-m>
+    </axis>
+  </animation>
+  
+  <!-- Gouverne de profondeur -->
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> 15 </factor>
+    <center>
+      <x-m> 4.61587 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 0.70098 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Animations des ailerons -->
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronG</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> -0.67432 </x1-m>
+      <y1-m> -5.58741 </y1-m>
+      <z1-m>  0.26997 </z1-m>
+      <x2-m> -0.39791 </x2-m>
+      <y2-m> -3.13584 </y2-m>
+      <z2-m>  0.03782 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronD</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> -0.39791 </x1-m>
+      <y1-m>  3.13584 </y1-m>
+      <z1-m>  0.03782 </z1-m>
+      <x2-m> -0.67432 </x2-m>
+      <y2-m>  5.58741 </y2-m>
+      <z2-m>  0.26997 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Volets -->
+  <animation>
+    <name>VoletGauche</name>
+    <object-name>voletG1</object-name>
+    <object-name>voletG2</object-name>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>VoletGauche</object-name>
+    <property>surface-positions/flaps-pos-norm</property>
+    <factor> 30 </factor>
+    <axis>
+      <x1-m> -0.46088 </x1-m>
+      <y1-m> -3.13848 </y1-m>
+      <z1-m> -0.02953 </z1-m>
+      <x2-m> -0.15393 </x2-m>
+      <y2-m> -0.69146 </y2-m>
+      <z2-m> -0.27122 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>voletG2</object-name>
+    <property>surface-positions/flaps-pos-norm</property>
+    <factor> 40 </factor>
+    <axis>
+      <x1-m> -0.12581 </x1-m>
+      <y1-m> -3.13745 </y1-m>
+      <z1-m> -0.00152 </z1-m>
+      <x2-m>  0.21288 </x2-m>
+      <y2-m> -0.69142 </y2-m>
+      <z2-m> -0.23918 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>VoletDroit</name>
+    <object-name>voletD1</object-name>
+    <object-name>voletD2</object-name>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>VoletDroit</object-name>
+    <property>surface-positions/flaps-pos-norm</property>
+    <factor> 30 </factor>
+    <axis>
+      <x1-m> -0.15393 </x1-m>
+      <y1-m>  0.69146 </y1-m>
+      <z1-m> -0.27122 </z1-m>
+      <x2-m> -0.46088 </x2-m>
+      <y2-m>  3.13848 </y2-m>
+      <z2-m> -0.02953 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>voletD2</object-name>
+    <property>surface-positions/flaps-pos-norm</property>
+    <factor> 40 </factor>
+    <axis>
+      <x1-m>  0.21288 </x1-m>
+      <y1-m>  0.69142 </y1-m>
+      <z1-m> -0.23918 </z1-m>
+      <x2-m> -0.12581 </x2-m>
+      <y2-m>  3.13745 </y2-m>
+      <z2-m> -0.00152 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Canopy -->
+  <animation>
+    <name>VerriereAvant</name>
+    <object-name>verriereA</object-name>
+    <object-name>vitresverriereA</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>VerriereAvant</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>VerriereAvant</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <factor> 0.6 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>VerriereAvant</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <factor> 0.04 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>VerriereArriere</name>
+    <object-name>verriereB</object-name>
+    <object-name>vitresverriereB</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>VerriereArriere</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.passenger.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>VerriereArriere</object-name>
+    <property>sim/model/door-positions/passenger/position-norm</property>
+    <factor> 0.5 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>VerriereArriere</object-name>
+    <property>sim/model/door-positions/passenger/position-norm</property>
+    <factor> -0.04 </factor>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- Ajout des effets lumineux
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/lights/beacon.xml</path>
+    <offsets>
+      <x-m> 5.312 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 2.099 </z-m>
+    </offsets>
+  </model> -->
+
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/light/RedLight.xml</path>
+    <offsets>
+      <x-m> -1.81708 </x-m>
+      <y-m> -5.87379 </y-m>
+      <z-m>  0.33430 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Aichi-M6A/Models/light/GreenLight.xml</path>
+    <offsets>
+      <x-m> -1.81708 </x-m>
+      <y-m>  5.87379 </y-m>
+      <z-m>  0.33430 </z-m>
+    </offsets>
+  </model>
+  
+</PropertyList>

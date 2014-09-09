@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+ <submodel>
+    <name>bomb</name>
+    <model>Aircraft/Aichi-M6A/Models/weapons/bomb.xml</model>
+    <trigger>controls/armament/station/release-all</trigger>
+    <speed>0</speed>
+    <repeat>false</repeat>
+    <delay>0</delay>
+    <count>1</count>
+    <x-offset>  4.59340 </x-offset> <!-- -1.40 m = 4.59340 ft -->
+    <y-offset>  0.00000 </y-offset> <!--  0.00 m = 0.00000 ft -->
+    <z-offset> -2.39513 </z-offset> <!-- -0.73 m = 2.39513 ft -->
+    <yaw-offset> 0.0 </yaw-offset>
+    <pitch-offset> 2 </pitch-offset>
+    <wind>false</wind>
+    <weight>500</weight>
+    <cd>1.2</cd>
+    <eda>0.03</eda> 
+    <collision>true</collision>
+    <collision-report>sim/ai/aircraft/collision/cannon</collision-report>
+    <impact>true</impact>
+    <impact-report>sim/ai/aircraft/impact/bomb</impact-report>
+  </submodel>
+
+</PropertyList>
