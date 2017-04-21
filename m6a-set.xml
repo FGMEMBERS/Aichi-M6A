@@ -9,6 +9,19 @@
     <flight-model>yasim</flight-model>
     <aero>m6a-yasim</aero>
 
+    <tags>
+      <tag>aichi</tag>
+      <tag>low-wing</tag>
+      <tag>tricycle</tag>
+      <tag>fixed-gear</tag>
+      <tag>single-engine</tag>
+      <tag>bomber</tag>
+      <tag>ww2</tag>
+      <tag>seaplane</tag>
+      <tag>fixed-gear</tag>
+      <tag>floats</tag>
+    </tags>
+
     <rating>
       <FDM type="int">     2 </FDM>
       <systems type="int"> 1 </systems>
